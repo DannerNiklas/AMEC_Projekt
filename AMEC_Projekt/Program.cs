@@ -15,8 +15,10 @@ namespace Kebab_Simulation
                 KebabEvents kebabEvents = new KebabEvents();
                 kebabEvents.StartTime = DateTime.Now;
                 kebabEvents.FillList();
-                Console.WriteLine(kebabEvents.Events.Count);
                 kebabEvents.ProcessList();
+
+                //Statistik:
+                kebabEvents.CalculateAllocation();
             }
         }
     }

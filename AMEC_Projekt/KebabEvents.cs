@@ -38,18 +38,18 @@ namespace Kebab_Simulation
 
         public void FillList()
         {
-            var ga = new Event(EventType.GuestArrives);
-            ga.TimeStamp = StartTime;
-            Events.Add(ga);
+            var ga_start = new Event(EventType.GuestArrives);
+            ga_start.TimeStamp = StartTime;
+            Events.Add(ga_start);
 
             while (Events.Count < maxServings)
             {
+                var ga = new Event(EventType.GuestArrives);
                 ga.TimeStamp = Events.Where(x => x.EventType == EventType.GuestArrives).OrderByDescending(x => x.TimeStamp).Last().TimeStamp;
-                ga.TimeStamp.AddSeconds(ArrivalInterval);
+                ga.TimeStamp = ga.TimeStamp.AddSeconds(ArrivalInterval);
                 Events.Add(ga);
             }
         }
-
         public void ProcessList()
         {
             while (Events.Count > 0)
@@ -58,14 +58,46 @@ namespace Kebab_Simulation
                 Events.Remove(currentCustomer);
                 var gl = new Event(EventType.GuestLeaves);
                 if (FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves).Count() > 0)
+                {
                     gl.TimeStamp = FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves).OrderByDescending(x => x.TimeStamp).Last().TimeStamp;
+                    gl.TimeStamp = gl.TimeStamp.AddSeconds(ServingTime);
+                }
                 else
                     gl.TimeStamp = StartTime;
-                gl.TimeStamp.AddSeconds(ServingTime);
                 FinishedEvents.Add(gl);
                 FinishedEvents.Add(currentCustomer);
                 Console.WriteLine(Events.Count);
             }
+        }
+
+        public List<double> CalculateAllocation()
+        {
+            Console.WriteLine("Start time " + StartTime);
+            //pos 0 = min, pos 1 = avg, pos 2 = max
+            List<double> allocation = new();
+
+            List<int> inQueues = new();
+            foreach (var processEvent in FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves).OrderByDescending(x => x.TimeStamp))
+            {
+                int inQueue = 0;
+                foreach (var inQueueEvent in FinishedEvents.Where(x => x.EventType == EventType.GuestArrives))
+                {
+                    if (inQueueEvent.TimeStamp < processEvent.TimeStamp)
+                        inQueue++;
+
+                }
+                foreach (var inQueueEvent in FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves))
+                {
+                    if (inQueueEvent.TimeStamp < processEvent.TimeStamp)
+                        inQueue--;
+                }
+                inQueues.Add(inQueue);
+            }
+            allocation.Add(inQueues.Min());
+            allocation.Add(inQueues.Max());
+            allocation.Add(inQueues.Average());
+            return allocation;
+
         }
 
         public class Event
