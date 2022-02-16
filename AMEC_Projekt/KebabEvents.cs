@@ -42,7 +42,7 @@ namespace Kebab_Simulation
             ga.TimeStamp = StartTime;
             Events.Add(ga);
 
-            while (maxServings < 15)
+            while (Events.Count < maxServings)
             {
                 ga.TimeStamp = Events.Where(x => x.EventType == EventType.GuestArrives).OrderByDescending(x => x.TimeStamp).Last().TimeStamp;
                 ga.TimeStamp.AddSeconds(ArrivalInterval);
