@@ -30,6 +30,7 @@ namespace Kebab_Simulation
             ArrivalInterval = arrivalInterval;
             ServingTime = servingTime;
             Events = new();
+            FinishedEvents = new();
             TotalServings = 0;
             NQ = 0;
             NR = 0;
@@ -56,7 +57,10 @@ namespace Kebab_Simulation
                 var currentCustomer = Events.Where(x => x.EventType == EventType.GuestArrives).OrderBy(x => x.TimeStamp).Last();
                 Events.Remove(currentCustomer);
                 var gl = new Event(EventType.GuestLeaves);
-                gl.TimeStamp = FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves).OrderByDescending(x => x.TimeStamp).Last().TimeStamp;
+                if (FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves).Count() > 0)
+                    gl.TimeStamp = FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves).OrderByDescending(x => x.TimeStamp).Last().TimeStamp;
+                else
+                    gl.TimeStamp = StartTime;
                 gl.TimeStamp.AddSeconds(ServingTime);
                 FinishedEvents.Add(gl);
                 FinishedEvents.Add(currentCustomer);
