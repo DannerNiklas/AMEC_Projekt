@@ -1,0 +1,15 @@
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\bin\Debug\net6.0\AMEC_Projekt.exe
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\bin\Debug\net6.0\AMEC_Projekt.deps.json
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\bin\Debug\net6.0\AMEC_Projekt.runtimeconfig.json
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\bin\Debug\net6.0\AMEC_Projekt.dll
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\bin\Debug\net6.0\ref\AMEC_Projekt.dll
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\bin\Debug\net6.0\AMEC_Projekt.pdb
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\obj\Debug\net6.0\AMEC_Projekt.csproj.AssemblyReference.cache
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\obj\Debug\net6.0\AMEC_Projekt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\obj\Debug\net6.0\AMEC_Projekt.AssemblyInfoInputs.cache
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\obj\Debug\net6.0\AMEC_Projekt.AssemblyInfo.cs
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\obj\Debug\net6.0\AMEC_Projekt.csproj.CoreCompileInputs.cache
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\obj\Debug\net6.0\AMEC_Projekt.dll
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\obj\Debug\net6.0\ref\AMEC_Projekt.dll
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\obj\Debug\net6.0\AMEC_Projekt.pdb
+C:\Users\nikla\source\repos\AMEC_Projekt\AMEC_Projekt\obj\Debug\net6.0\AMEC_Projekt.genruntimeconfig.cache
