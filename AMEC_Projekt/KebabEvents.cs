@@ -59,14 +59,13 @@ namespace Kebab_Simulation
                 var gl = new Event(EventType.GuestLeaves);
                 if (FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves).Count() > 0)
                 {
-                    gl.TimeStamp = FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves).OrderByDescending(x => x.TimeStamp).Last().TimeStamp;
+                    gl.TimeStamp = FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves).OrderByDescending(x => x.TimeStamp).First().TimeStamp;
                     gl.TimeStamp = gl.TimeStamp.AddSeconds(ServingTime);
                 }
                 else
                     gl.TimeStamp = StartTime;
                 FinishedEvents.Add(gl);
                 FinishedEvents.Add(currentCustomer);
-                Console.WriteLine(Events.Count);
             }
         }
 
@@ -87,9 +86,11 @@ namespace Kebab_Simulation
 
                 }
                 foreach (var inQueueEvent in FinishedEvents.Where(x => x.EventType == EventType.GuestLeaves))
-                {
+                {                  
                     if (inQueueEvent.TimeStamp < processEvent.TimeStamp)
+                    {
                         inQueue--;
+                    }
                 }
                 inQueues.Add(inQueue);
             }

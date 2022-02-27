@@ -18,7 +18,10 @@ namespace Kebab_Simulation
                 kebabEvents.ProcessList();
 
                 //Statistik:
-                kebabEvents.CalculateAllocation();
+                var test = kebabEvents.CalculateAllocation();
+                Console.WriteLine("Minimum in Queue: " + test[0]);
+                Console.WriteLine("Maximum in Queue: " + test[1]);
+                Console.WriteLine("Average in Queue: " + test[2]);
             }
         }
     }
